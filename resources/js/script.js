@@ -46,6 +46,7 @@ cards.shuffle();
 var half = cards.length/2
 for (i=0; i<half; i++) {
     player.push(cards[i]);
+    console.log(cards[i]);
 }
 cards.splice(0, half);
 computer = cards;
