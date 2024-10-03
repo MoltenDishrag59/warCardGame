@@ -45,8 +45,8 @@ cards.shuffle = function() {
 cards.shuffle();
 var half = cards.length/2
 for (i=0; i<half; i++) {
-    player.push(cards[i]);
-    console.log("Cars have been dealt");
+    player.push(cards[i]); //For some reason the cards aren't being pushed
+    console.log("Cards have been dealt");
 }
 cards.splice(0, half);
 computer = cards;
@@ -60,12 +60,12 @@ function assign(){
     }
     $playerSuit.empty();
     $computerSuit.empty();
-    var number1=player[0][0]; //This line has the error
-    var number2=computer[0][0]; //If that one ^ does, then this one likely will too
+    var number1=player[0][0];
+    var number2=computer[0][0];
     $playerNumber.html(number1);
     $computernumber.html(number2);
-    suit1 = player[0][1]; //That also applies to this...
-    suit2 = computer[0][1]; //...and this
+    suit1 = player[0][1];
+    suit2 = computer[0][1];
     const suits = ['','heart','diamond','club','spade'];
     image1 = `<img src="resources/images/${suits[suit1]}.png"/>`;
     image2 = `<img src="resources/images/${suits[suit2]}.png"/>`;
