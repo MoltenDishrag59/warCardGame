@@ -6,7 +6,7 @@ var $player = $("#player");
 var $playerNumber = $("#playerNumber");
 var $playerSuit = $("#playerSuit");
 var $computer = $("#computer");
-var $computerNumber = $("#computernumber");
+var $computerNumber = $("#computerNumber");
 var $computerSuit = $("#computerSuit");
 var $draw = $("#draw");
 var $winner = $("#winner");
@@ -22,8 +22,7 @@ var numberImg2;
 for (i=1; i<14; i++){
     for (k=1; k<5; k++) {
         var j = [i,k];
-    playedCards.push(j);
-    cards = j;
+    cards.push(j);
     console.log(j);
     }
 }
@@ -55,21 +54,44 @@ $playerCards.html(player.length);
 $computerCards.html(computer.length);
 
 function assign(){
+    console.log("Assign");
     if(player.length == 0 || computer.length == 0){
         endgame();
         return;
     }
     $playerSuit.empty();
     $computerSuit.empty();
-    var number1=player[0][0];
-    var number2=computer[0][0];
+    number1=player[0][0];
+    number2=computer[0][0];
     $playerNumber.html(number1);
-    $computernumber.html(number2);
+    $computerNumber.html(number2);
     suit1 = player[0][1];
     suit2 = computer[0][1];
-    const suits = ['','heart','diamond','club','spade'];
-    image1 = `<img src="resources/images/${suits[suit1]}.png"/>`;
-    image2 = `<img src="resources/images/${suits[suit2]}.png"/>`;
+     if (suit1 == 1) {
+        suit1 = "<img src='resources/images/heart.png"
+    }
+    if (suit1 == 2) {
+        suit1 = "<img src='resources/images/club.png"
+    }
+    if (suit1 == 3) {
+        suit1 = "<img src='resources/images/diamond.png"
+    }
+    if (suit1 == 4) {
+        suit1 = "<img src='resources/images/spade.png"
+    }
+    if (suit2 == 1) {
+        suit2 = "<img src='resources/images/heart.png"
+    }
+    if (suit2 == 2) {
+        suit2 = "<img src='resources/images/club.png"
+    }
+    if (suit2 == 3) {
+        suit2 = "<img src='resources/images/diamond.png"
+    }
+    if (suit2 == 4) {
+        suit2 = "<img src='resources/images/spade.png"
+    }
+
     if (number1<11){
 
         for (i=0; i<number1; i++) {
@@ -156,8 +178,6 @@ function war(){
         $computerSuit.css("display", "none");
         numberImg1 = "<img style='height:14rem;' src='resources/images/card.png'/>";
         numberImg2 = "<img style='height:14rem;' src='resources/images/card.png'/>";
-        console.log("call greater");
-        greater();
 }
 
 function greater(){
@@ -169,19 +189,22 @@ function greater(){
         for (i=0; i<playedCards.length; i++) {
             player.push(playedCards[i])
         }
+        playedCards = [];
+        $playerCards.html(player.length);
     } else if (number1 < number2) {
         $winner.html("Computer Wins");
         console.log("player loss");
         for (i=0; i<playedCards.length; i++) {
             computer.push(playedCards[i])
         }
+        playedCards = [];
+        $computerCards.html(computer.length);
     } else if (number1 == number2) {
         console.log("call war");
         war();
         }
-    playedCards = [];
-    $playerCards.html(player.length);
-    $computerCards.html(computer.length);
+
+    
 }
 
 $draw.on("click", function() {
